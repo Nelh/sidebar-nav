@@ -1,0 +1,225 @@
+:root {
+    --white: #fff;
+    --dark: #17171e;
+    --grey: #292932;
+    --status: transparent;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--dark);
+    height: 100%;
+    line-height: 1;
+}
+
+.sidebar {
+    width: 23.2rem;
+    height: 100%;
+    position: fixed;
+    background-color: var(--dark);
+    color: var(--white);
+    top: 0;
+    padding: 2.1rem 1.2rem;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.logo {
+    margin-left: 10px;
+}
+
+.logo-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    font-size: 1.8rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.logo-icon {
+    color: var(--white);
+    font-size: 1.8rem;
+}
+
+.categories-list,
+.features-list {
+    padding-bottom: 1rem;
+    list-style: none;
+    border-bottom: 1px solid var(--grey);
+}
+
+.features-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: .5rem .9rem;
+    margin-bottom: 1.1rem;
+    color: var(--white);
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.features-item:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: -1.2rem;
+    border-left: 3px solid var(--white);
+    border-radius: 2px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.features-item:hover {
+    color: silver;
+    transition: .5s ease;
+}
+
+.features-item-icon {
+    position: relative;
+}
+
+.features-item-icon,
+.features-item-text {
+    font-size: 1.5rem;
+}
+
+.features-item-text {
+    margin-left: 1.5rem;
+    opacity: 1;
+    transition:  opacity .5s ease;
+}
+
+.features-item-status {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    border-radius: .4rem;
+    padding: .5rem .9rem;
+    background-color: var(--status);
+    color: var(--white);
+    opacity: 1;
+    transition: .6s linear;
+    font-size: 1.4rem;
+}
+
+.tooltips {
+    position: absolute;
+    top: -2.1rem;
+    left: 6.4rem;
+    background-color: var(--white);
+    color: var(--dark);
+    border-radius: .4rem;
+    padding: .5rem .9rem;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    display: none;
+}
+
+.category-header {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    line-height: 1.8rem;
+    color: var(--white);
+    margin-bottom: 1.3rem;
+    white-space: nowrap;
+    margin-left: 10px;
+    padding-top: 2rem;
+}
+
+.category-item {
+    position: relative;
+    padding: .9rem 1.1rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.category-item-status {
+    height: .8rem;
+    width: .8rem;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--status);
+    display: inline-block;
+}
+
+.category-item-text {
+    margin-left: 1rem;
+    font-size: 1.3rem;
+    opacity: 1;
+}
+
+.category-item-number {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3rem;
+    right: 0;
+}
+
+.features-item:hover .tooltips,
+.category-item:hover .tooltips {
+    top: 50%;
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+.sidebar.collapse {
+    width: 6.4rem;
+}
+
+.sidebar.collapse .tooltips {
+    display: block;
+}
+
+.sidebar.collapse .logo,
+.sidebar.collapse .category-header,
+.sidebar.collapse .features-item-text,
+.sidebar.collapse .features-item-number,
+.sidebar.collapse .category-item-text,
+.sidebar.collapse .category-item-number,
+.sidebar.collapse .features-item-status {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.collapse .logo-button {
+    right: 1rem;
+}
+
+.status {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    background-color: var(--status);
+    height: .8rem;
+    width: .8rem;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    opacity: 0;
+    transition: .6s linear;
+}
+
+.sidebar.collapse .status {
+    opacity: 1;
+}
