@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"  />
+    <title> Navigation Example</title>
+  </head>
+  <body>
+
+    <style>
+      :root {
+        --white-color: #fafafb;
+        --background-color: #17171e;
+        --grey-color: #b5b5be;
+        --dark-grey-color: #292932;
+        --status-color: #ff1e1e;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        font-family: 'Poppins', sans-serif;
+        font-size: 62.5%;
+        font-weight: 500;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4rem;
+        color: var(--white-color);
+        height: 100vh;
+        background-color: var(--white-color);
+        line-height: 1;
+      }
+    </style>
+
+    <div class="sidebar">
+      <div class="logo-wrapper">
+        <div class="logo-name">
+          <img src="./images/youtubetv.svg" width="125" class="logo" />
+        </div>
+        <button class="logo-button">
+          <i class="bx bx-left-arrow-alt logo-icon" id="logo-icon"></i>
+        </button>
+      </div>
+
+      <style>
+        .sidebar {
+          width: 23.2rem;
+          height: 100%;
+          position: fixed;
+          top: 0;
+          background-color: #17171e;
+          padding: 2.1rem 1.2rem;
+          transition: all 0.5s ease;
+        }
+
+        .logo-wrapper {
+          position: relative;
+          margin-bottom: 2.1rem;
+          display: flex;
+          font-size: 1.2rem;
+        }
+
+        .logo-name {
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+        }
+
+        .logo-button {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          font-size: 1.8rem;
+          transform: translateY(-50%);
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+        }
+
+        .logo-icon {
+          font-size: 1.8rem;
+          color: var(--grey-color);
+        }
+      </style>
+
+      <ul class="features-list">
+        <li class="features-item">
+          <i class='bx bxs-dashboard features-item-icon'></i>
+          <span class="features-item-text">Dashboard</span>
+          <span class="tooltip">Dashboard</span>
+        </li>
+
+        <li class="features-item">
+          <i class="bx bxs-inbox features-item-icon inbox-icon"
+            ><span class="status"></span
+          ></i>
+          <span class="features-item-text">Inbox</span>
+          <span class="features-item-status" style="background-color: #ff1e1e;">99</span>
+          <span class="tooltip">Inbox</span>
+        </li>
+
+        <li class="features-item">
+          <i class='bx bx-calendar-week features-item-icon' ></i>
+          <span class="features-item-text">Calendar</span>
+          <span class="features-item-status" style="background-color: #0984e3">10</span>
+          <span class="tooltip">Calendar</span>
+        </li>
+
+        <li class="features-item">
+          <i class='bx bx-message-dots features-item-icon'></i>
+          <span class="features-item-text">Chat</span>
+          <span class="tooltip">Chat</span>
+        </li>
+
+        <li class="features-item">
+          <i class='bx bx-receipt features-item-icon'></i>
+          <span class="features-item-text">Invoice</span>
+          <span class="tooltip">Invoice</span>
+        </li>
+
+        <li class="features-item">
+          <i class="bx bx-user features-item-icon"></i>
+          <span class="features-item-text">Profile</span>
+          <span class="tooltip">Profile</span>
+        </li>
+
+        <li class="features-item">
+          <i class="bx bx-cog features-item-icon"></i>
+          <span class="features-item-text">Setting</span>
+          <span class="tooltip">Setting</span>
+        </li>
+        
+        <style>
+          .features-list {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #292932;
+            list-style: none;
+          }
+
+          .features-item {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0.5rem 0.9rem;
+            margin-bottom: 1.1rem;
+            color: var(--grey-color);
+            cursor: pointer;
+            transition: 0.5s ease;
+          }
+          .features-item::before {
+            transition: 0.5s ease;
+            content: '';
+            position: absolute;
+            left: -1.2rem;
+            height: 100%;
+            border-left: 3px solid var(--white-color);
+            border-radius: 2px;
+            opacity: 0;
+            visibility: hidden;
+          }
+
+          .features-item:hover {
+            color: var(--white-color);
+            transition: 0.5s ease;
+          }
+
+          .features-item:hover::before {
+            opacity: 1;
+            visibility: unset;
+          }
+
+          .features-item-icon {
+            font-size: 2rem;
+          }
+
+          .features-item-text {
+            margin-left: 1.5rem;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+          }
+
+          
+          .features-item-status {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background-color: transparent;
+            padding: 0.5rem 0.9rem;
+            border-radius: 0.4rem;
+            color: var(--white-color);
+            opacity: 1;
+            transition: 0.6s linear;
+          }
+
+          .inbox-icon {
+            position: relative;
+          }
+
+          .inbox-icon .status {
+            position: absolute;
+            top: 0;
+            right: -1px;
+            background-color: var(--status-color);
+            height: 9px;
+            width: 9px;
+            border-radius: 50%;
+            border: 2px solid var(--white-color);
+            opacity: 0;
+            transition: 0.6s linear;
+          }
+        </style>
+      </ul>
+
+      <ul class="category-list">
+        <div class="category-header">Message categories</div>
+        <li class="category-item">
+          <span
+            class="category-item-status"
+            style="background-color: #79d861"
+          ></span
+          ><span class="category-item-text">My works</span
+          ><span class="category-item-number">9</span>
+          <span class="tooltip">My works</span>
+        </li>
+        <li class="category-item">
+          <span
+            class="category-item-status"
+            style="background-color: #c43c5d"
+          ></span
+          ><span class="category-item-text">Accountant</span
+          ><span class="category-item-number">43</span>
+          <span class="tooltip">Accountant</span>
+        </li>
+        <li class="category-item">
+          <span
+            class="category-item-status"
+            style="background-color: #ff5050"
+          ></span
+          ><span class="category-item-text">Works</span
+          ><span class="category-item-number">78</span>
+          <span class="tooltip">Works</span>
+        </li>
+        <li class="category-item">
+          <span
+            class="category-item-status"
+            style="background-color: #42ffdd"
+          ></span
+          ><span class="category-item-text">Marketing</span
+          ><span class="category-item-number">253</span>
+          <span class="tooltip">Marketing</span>
+        </li>
+      </ul>
+
+      <style>
+        .category-list {
+          padding-top: 2.1rem;
+          padding-bottom: 0.9rem;
+          color: var(--grey-color);
+          list-style: none;
+          font-size: 1.2rem;
+          font-weight: 500;
+          border-bottom: 1px solid #292932;
+        }
+
+        .category-header {
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          line-height: 1.8rem;
+          color: var(--white-color);
+          margin-bottom: 1.3rem;
+          white-space: nowrap;
+        }
+
+        .category-item {
+          position: relative;
+          padding: 0.9rem 1.1rem;
+          line-height: 1.8rem;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+
+        .category-item-status {
+          height: 0.8rem;
+          width: 0.8rem;
+          border-radius: 50%;
+          border: none;
+          background-color: var(--white-color);
+          display: inline-block;
+        }
+        .category-item-text {
+          margin-left: 1rem;
+          transition: opacity 0.6s ease;
+          opacity: 1;
+        }
+
+        .category-item-number {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+        }
+      </style>
+
+
+      <style>
+        .tooltip {
+          position: absolute;
+          top: -2.1rem;
+          left: 6.4rem;
+          background-color: var(--white-color);
+          color: var(--background-color);
+          border-radius: 0.4rem;
+          padding: 0.5rem 0.9rem;
+          font-size: 1.4rem;
+          transition: 0s;
+          opacity: 0;
+          display: none;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+      </style>
+
+
+
+    </div>
+    <div class="container">
+      <div style="margin:30px auto">
+        <div id="carbon-block"></div>
+      </div>
+      <h1>Smooth Collapsible Sidebar Navigation Example</h1>
+      <p class="lead">A modern sidebar navigation with smooth expand & collapse transitions, written in CSS/CSS3 and vanilla JavaScript.</p>
+    </div>
+
+    <!-- // responsivness -->
+
+    <style>
+      .sidebar.collapse .message:hover .tooltip,
+      .features-item:hover .tooltip,
+      .category-item:hover .tooltip,
+      .chat-new-btn:hover .tooltip {
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.5s ease;
+        opacity: 1;
+      }
+
+      .sidebar.collapse {
+        width: 6.4rem;
+      }
+
+      .sidebar.collapse .tooltip {
+        display: block;
+      }
+
+      .sidebar.collapse .logo-name,
+      .sidebar.collapse .category-header,
+      .sidebar.collapse .chat-header,
+      .sidebar.collapse .chat-new-btn-text,
+      .sidebar.collapse .features-item-text,
+      .sidebar.collapse .features-item-status,
+      .sidebar.collapse .category-item-text,
+      .sidebar.collapse .category-item-number,
+      .sidebar.collapse .message-text,
+      .sidebar.collapse .chat-item-name,
+      .sidebar.collapse .chat-item-number,
+      .sidebar.collapse .chat-item-status {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .sidebar.collapse .message-text {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(0);
+      }
+      .sidebar.collapse .message-icon {
+        transform: translateX(0);
+      }
+      .sidebar.collapse .logo-button {
+        right: 0.5rem;
+      }
+
+      .sidebar.collapse .inbox-icon .status,
+      .sidebar.collapse .chat-item-avatar-wrapper::before {
+        opacity: 1;
+      }
+
+    </style>
+
+    <script type="text/javascript">
+      {
+        let sideBar = document.querySelector('.sidebar');
+        let arrowCollapse = document.querySelector('#logo-icon');
+        sideBar.onclick = () => {
+          sideBar.classList.toggle('collapse');
+          arrowCollapse.classList.toggle('collapse');
+          if (arrowCollapse.classList.contains('collapse')) {
+            arrowCollapse.classList =
+              'bx bx-right-arrow-alt logo-icon collapse';
+          } else {
+            arrowCollapse.classList = 'bx bx-right-arrow-alt logo-icon';
+          }
+        };
+      }
+    </script>
+  </body>
+</html>
